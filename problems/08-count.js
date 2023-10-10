@@ -27,12 +27,21 @@ console.log(result4); // 0
 *******************************************************************************/
 
 function count(array, cb) {
-  // Your code here 
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let num = array[i];
+    let final = cb(num);
+    if (final === true) result.push(final);
+  }
+  return result.length;
 }
-
+let result1 = count([18, 5, 32, 7, 100], function (n) {
+  return n % 2 === 0;
+});
+console.log(result1); // 3
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = count;
-} catch(e) {
+} catch (e) {
   return null;
 }
