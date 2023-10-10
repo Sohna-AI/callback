@@ -24,9 +24,14 @@ console.log(result3);   // true
 *******************************************************************************/
 
 function mySome(array, cb) {
-  for(let i = 0; i < array.length; i++) {
-    
+  for (let i = 0; i < array.length; i++) {
+    let curr = array[i];
+
+    if (cb(curr, i)) {
+      return true;
+    }
   }
+  return false;
 }
 
 let result1 = mySome([5, 1, 7, 9], function (ele, i) {
