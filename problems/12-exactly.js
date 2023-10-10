@@ -28,12 +28,22 @@ console.log(result4); // true
 *******************************************************************************/
 
 function exactly(array, num, cb) {
-  // Your code here 
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let val = array[i];
+    let final = cb(val);
+    if (final === true) result.push(final);
+  }
+  return result.length === num;
 }
 
+let result1 = exactly([18, 5, 32, 7, 100], 3, function (n) {
+  return n % 2 === 0;
+});
+console.log(result1); // true
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = exactly;
-} catch(e) {
+} catch (e) {
   return null;
 }
