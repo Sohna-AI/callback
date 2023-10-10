@@ -31,9 +31,22 @@ console.log(result3); // 8
 *******************************************************************************/
 
 function mySimpleReduce(array, cb) {
-  // Your code here 
+  let result = array[0];
+  for (let i = 1; i < array.length; i++) {
+    let val = array[i];
+    result = cb(result, val);
+  }
+  return result;
 }
 
+let result3 = mySimpleReduce([4, 6, 2, 8, 3], function (max, el) {
+  if (el > max) {
+    return el;
+  } else {
+    return max;
+  }
+});
+console.log(result3); // 8
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = mySimpleReduce;
