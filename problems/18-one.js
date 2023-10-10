@@ -38,12 +38,26 @@ console.log(result6);   // true
 *******************************************************************************/
 
 function one(array, cb) {
-  // Your code here 
+  return array.filter(cb).length === 1;
 }
 
+let result1 = one(["x", "y", "z"], function (el) {
+  return el === "a";
+});
+console.log(result1); // false
+
+let result2 = one(["x", "a", "y", "z"], function (el) {
+  return el === "a";
+});
+console.log(result2); // true
+
+let result6 = one(["apple", "dog", "food", "cat"], function (el, idx) {
+  return el.length === idx;
+});
+console.log(result6); // true
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = one;
-} catch(e) {
+} catch (e) {
   return null;
 }
