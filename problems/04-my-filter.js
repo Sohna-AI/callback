@@ -20,12 +20,21 @@ console.log(result2);      // ['choose', 'words', 'only']
 *******************************************************************************/
 
 function myFilter(array, cb) {
-    // Your code here 
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let num = array[i];
+    let arr = cb(num);
+    if (arr === true) result.push(num);
+  }
+  return result;
 }
-
+let result1 = myFilter([5, 7, 4, 3, 8], function (n) {
+  return n % 2 === 0;
+});
+console.log(result1); // [ 4, 8 ]
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
-    module.exports = myFilter;
-} catch(e) {
-    return null;
+  module.exports = myFilter;
+} catch (e) {
+  return null;
 }
