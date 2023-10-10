@@ -35,12 +35,29 @@ console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper))
 *******************************************************************************/
 
 function alternatingMap(array, cb1, cb2) {
-  // Your code here 
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let val = array[i];
+    if (i % 2 === 0) result.push(cb1(val));
+    if (i % 2 !== 0) result.push(cb2(val));
+  }
+  return result;
 }
 
+let yell = function (s) {
+  return s.toUpperCase() + "!";
+};
+
+let whisper = function (s) {
+  return ".." + s.toLowerCase() + "..";
+};
+console.log(
+  alternatingMap(["hEy", "EVERYone", "whats", "uP??"], yell, whisper)
+);
+// [ 'HEY!', '..everyone..', 'WHATS!', '..up??..' ]
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = alternatingMap;
-} catch(e) {
+} catch (e) {
   return null;
 }
