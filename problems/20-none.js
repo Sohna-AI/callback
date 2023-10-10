@@ -29,9 +29,35 @@ console.log(result4);   // false
 *******************************************************************************/
 
 function none(array, cb) {
-  // Your code here 
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let val = array[i];
+    let final = cb(val);
+    result.push(final);
+  }
+  //console.log(result);
+  if (result.every((key) => key === false)) return true;
+  if (result.some((key) => key === true)) return false;
 }
+let result1 = none(["ruby", "topaz", "opal"], function (w) {
+  return w.includes("e");
+});
+console.log(result1); // true
 
+let result2 = none(["ruby", "topaz", "sapphire", "opal"], function (w) {
+  return w.includes("e");
+});
+console.log(result2); // false
+
+let result3 = none([4, 5, 7, 1], function (n) {
+  return n < 0;
+});
+console.log(result3); // true
+
+let result4 = none([4, -5, 7, -1], function (n) {
+  return n < 0;
+});
+console.log(result4); // false
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = none;
