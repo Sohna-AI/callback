@@ -24,11 +24,34 @@ let removeVowels = function(word) {
 let result2 = sentenceMapper("this is pretty cool right", removeVowels);
 console.log(result2); // 'ths s prtty cl rght'
 *******************************************************************************/
-
+let removeVowels = function (word) {
+  let newWord = "";
+  for (let i = 0; i < word.length; i++) {
+    let char = word[i];
+    if (!"aeiou".includes(char)) {
+      newWord += char;
+    }
+  }
+  return newWord;
+};
 let sentenceMapper = function (sentence, cb) {
-  // Your code here 
+  let sen = sentence.split(" ");
+  let arr = [];
+  for (let i = 0; i < sen.length; i++) {
+    let newsen = sen[i];
+    let final = cb(newsen);
+    arr.push(final);
+  }
+  return arr.join(" ");
 };
 
+let result1 = sentenceMapper("what is the answer?", function (word) {
+  return word.toUpperCase() + "!";
+});
+console.log(result1); // 'WHAT! IS! THE! ANSWER?!'
+
+let result2 = sentenceMapper("this is pretty cool right", removeVowels);
+console.log(result2); // 'ths s prtty cl rght'
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = sentenceMapper;
