@@ -32,7 +32,17 @@ console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 *******************************************************************************/
 
 function suffixCipher(sentence, cipher) {
-  
+  let sen = sentence.split(" ");
+  let modified = sen.map((word) => {
+    for (let suffix in cipher) {
+      if (word.endsWith(suffix)) {
+        let cbfunc = cipher[suffix];
+        return cbfunc(word);
+      }
+    }
+    return word;
+  });
+  return modified.join(" ");
 }
 
 let cipher1 = {
